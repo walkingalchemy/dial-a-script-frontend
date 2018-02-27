@@ -1,9 +1,8 @@
-export default function usersReducer(state = { username: null }, action) {
+export default function usersReducer(state = { name: null }, action) {
   switch (action.type) {
     case "SET_CURRENT_USER":
-      localStorage.setItem('jwt', action.payload.jwt)
-      console.log({...state, username: action.payload.username});
-      return {...state, username: action.payload.username}
+      console.log({...state, name: action.payload.name});
+      return {...state, name: action.payload.name}
     default:
       return state
   }
