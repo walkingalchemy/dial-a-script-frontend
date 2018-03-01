@@ -13,7 +13,6 @@ export function loginUser(name, password) {
       return response.json()
     })
     .then(userData => {
-      debugger
       dispatch(setCurrentUser(userData))
       localStorage.setItem('jwt', userData.jwt)
     })
@@ -40,13 +39,7 @@ export function signupUser(name, password) {
   }
 }
 
-export function showUser(uid) {
-  return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/users/${uid}`)
-    .then(resp => resp.json())
-    .then( json => console.log(json))
-  }
-}
+
 
 export function setCurrentUser(userData) {
   return {

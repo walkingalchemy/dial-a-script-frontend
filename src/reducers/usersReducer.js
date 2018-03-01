@@ -1,8 +1,7 @@
-export default function usersReducer(state = { name: null }, action) {
+export default function usersReducer(state = { name: null, currentUserId: null }, action) {
   switch (action.type) {
     case "SET_CURRENT_USER":
-      console.log({...state, name: action.payload.name});
-      return {...state, name: action.payload.name}
+      return {...state, name: action.payload.name, currentUserId: action.payload.user_id}
     default:
       return state
   }

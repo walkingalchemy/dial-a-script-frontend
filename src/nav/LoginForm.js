@@ -4,13 +4,13 @@ import { loginUser } from '../actions/user'
 
 class LoginForm extends React.Component {
   state = {
-    username: "",
+    name: "",
     password: ""
   }
 
-  handleUsernameChange = (event) => {
+  handleNameChange = (event) => {
     this.setState({
-      username: event.target.value
+      name: event.target.value
     })
   }
 
@@ -22,14 +22,14 @@ class LoginForm extends React.Component {
 
   handleLoginSubmit = (event) => {
     event.preventDefault()
-    this.props.loginUser(this.state.username, this.state.password)
+    this.props.loginUser(this.state.name, this.state.password)
   }
 
   render() {
     return(
       <form onSubmit={this.handleLoginSubmit}>
-        <input type="text" value={this.state.username} onChange={this.handleUsernameChange}></input>
-        <input type="password" value={this.state.password} onChange={this.handlePasswordChange}></input>
+        <input type="text" placeholder="Name" value={this.state.name} onChange={this.handleNameChange}></input>
+        <input type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange}></input>
         <button type="submit">Login</button>
       </form>
     )

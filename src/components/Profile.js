@@ -1,18 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { showUser } from '../actions/user'
+import ScriptContainer from './ScriptContainer'
 
 class Profile extends React.Component {
-  handleClick = () => {
-    this.props.showUser(1)
-  }
 
   render () {
     return (
       <div>
-      <h1>Hello, {this.props.name}</h1>
-      <button onClick={this.handleClick}> Test </ button>
+      {!this.props.name ?
+        <h1>Please Log In or Sign Up</h1>
+        :
+        <ScriptContainer />
+      }
       </div>
     )
   }
@@ -22,4 +22,4 @@ const mapStateToProps = (state) => ({ name: state.usersReducer.name })
 
 
 
-export default connect(mapStateToProps, { showUser })(Profile)
+export default connect(mapStateToProps)(Profile)
