@@ -15,7 +15,7 @@ class ScriptContainer extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    adapter.eventHandlers.createScript({...this.state, user_id: this.props.currentUserId}).then(resp => {
+    adapter.eventHandlers.createScript({...this.state, user_id: this.props.auth.currentUserId}).then(resp => {
       if (resp.error) {
         alert(resp.error)
       } else {
@@ -56,7 +56,7 @@ class ScriptContainer extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({ name: state.usersReducer.name, currentUserId: state.usersReducer.currentUserId })
+const mapStateToProps = (state) => ({ auth: state.auth })
 
 
 

@@ -8,15 +8,9 @@ class LoginForm extends React.Component {
     password: ""
   }
 
-  handleNameChange = (event) => {
+  onInputChange = (e) => {
     this.setState({
-      name: event.target.value
-    })
-  }
-
-  handlePasswordChange = (event) => {
-    this.setState({
-      password: event.target.value
+      [e.target.name]: e.target.value
     })
   }
 
@@ -28,8 +22,8 @@ class LoginForm extends React.Component {
   render() {
     return(
       <form onSubmit={this.handleLoginSubmit}>
-        <input type="text" placeholder="Name" value={this.state.name} onChange={this.handleNameChange}></input>
-        <input type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange}></input>
+        <input name="name" type="text" placeholder="Name" value={this.state.name} onChange={this.onInputChange}></input>
+        <input name="password" type="password" placeholder="Password" value={this.state.password} onChange={this.onInputChange}></input>
         <button type="submit">Login</button>
       </form>
     )

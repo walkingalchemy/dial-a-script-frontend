@@ -9,21 +9,9 @@ class SignupForm extends React.Component {
     passwordConfirmation: ""
   }
 
-  handleNameChange = (event) => {
+  onInputChange = (e) => {
     this.setState({
-      username: event.target.value
-    })
-  }
-
-  handlePasswordChange = (event) => {
-    this.setState({
-      password: event.target.value
-    })
-  }
-
-  handlePasswordConfirmationChange = (event) => {
-    this.setState({
-      passwordConfirmation: event.target.value
+      [e.target.name]: e.target.value
     })
   }
 
@@ -42,9 +30,9 @@ class SignupForm extends React.Component {
   render() {
     return(
       <form onSubmit={this.handleSignupSubmit}>
-        <input type="text" placeholder="Name" value={this.state.name} onChange={this.handleNameChange}></input>
-        <input type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange}></input>
-        <input type="password" placeholder="Confirm Password" value={this.state.passwordConfirmation} onChange={this.handlePasswordConfirmationChange}></input>
+        <input name="name" type="text" placeholder="Name" value={this.state.name} onChange={this.onInputChange}></input>
+        <input name="password" type="password" placeholder="Password" value={this.state.password} onChange={this.onInputChange}></input>
+        <input name="passwordConfirmation" type="password" placeholder="Confirm Password" value={this.state.passwordConfirmation} onChange={this.onInputChange}></input>
         <button type="submit">Signup</button>
       </form>
     )

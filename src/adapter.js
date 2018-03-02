@@ -1,34 +1,38 @@
-const token = localStorage.getItem('jwt')
 
 const baseHeaders = {
   'Content-Type': 'application/json',
-  Accepts: 'application/json',
+  'accept': 'application/json',
 }
 
 const authedHeaders = {
   'Content-Type': 'application/json',
-  Accepts: 'application/json',
-  Authorization: token
+  'accept': 'application/json',
+  'Authorization': localStorage.getItem('jwt')
 }
 
 const URL_ROOT = 'http://localhost:3000'
 const API_ROOT = `${URL_ROOT}/api/v1`
 
-// const login = (email, password) => {
-//   return fetch(`${URL_ROOT}/login`, {
-//     method: 'POST',
-//     headers: headers(),
-//     body: JSON.stringify( {email, password})
-//   }).then(res => res.json())
-// }
-//
-// const signup = (signupBody) => {
-//   return fetch(`${URL_ROOT}/signup`, {
-//     method: 'POST',
-//     headers: Singup_headers(),
-//     body: JSON.stringify({user: signupBody})
-//   }).then(res => res.json())
-// }
+
+const login = (loginParams) => {
+  return fetch(`${API_ROOT}/login`, {
+    method: 'POST',
+    headers: baseHeaders,
+    body: JSON.stringify({ user: loginParams })
+  })
+  .then(resp => resp.json())
+}
+
+const signup = (signupParams) => {
+  return fetch(`${API_ROOT}/signup`, {
+  method: 'POST',
+  headers: baseHeaders,
+  body: JSON.stringify({ user: signupParams })
+})
+.then(response => {
+  return response.json()
+})
+}
 //
 // const getLoggedInUser = () => {
 //   return fetch(`${URL_ROOT}/current_user`, {
@@ -184,5 +188,7 @@ export default {
      createScript,
   },
   auth: {
+    login,
+    signup
   }
 }
