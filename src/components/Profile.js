@@ -8,7 +8,7 @@ class Profile extends React.Component {
   render () {
     return (
       <div>
-      {!this.props.name ?
+      {!this.props.auth.name ?
         <h1>Please Log In or Sign Up</h1>
         :
         <ScriptContainer />
@@ -18,7 +18,7 @@ class Profile extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({ name: state.usersReducer.name })
+const mapStateToProps = (state) => ({ auth: state.auth })
 
 
 

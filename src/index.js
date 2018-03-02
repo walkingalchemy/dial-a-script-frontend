@@ -13,11 +13,27 @@ import usersReducer from './reducers/usersReducer'
 
 import registerServiceWorker from './registerServiceWorker';
 // hook up redux
-const rootReducer = combineReducers({ usersReducer })
+const rootReducer = combineReducers({ 
+  auth: usersReducer 
+})
 
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
+const store = createStore(
+  rootReducer,
+  {
+    auth: {
+      name: null,
+      currentUserId: null
+      }
+  }, 
+  composeWithDevTools(applyMiddleware(thunk))
+)
 
-ReactDOM.render(<Provider store={store}><Router><App /></Router></Provider>, document.getElementById('root'));
+ReactDOM.render((
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>), document.getElementById('root'));
 registerServiceWorker();
 
 
