@@ -14,7 +14,7 @@ export function loginUser(name, password) {
 
 export function signupUser(name, password) {
   return (dispatch) => {
-    adapter.auth.signup({name, password})
+    return adapter.auth.signup({name, password})
     .then(userData => {
       dispatch(setCurrentUser(userData))
       localStorage.setItem('jwt', userData.jwt)

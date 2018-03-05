@@ -44,13 +44,17 @@ class App extends Component {
               return localStorage.getItem('jwt') ? <ScriptList /> : <LoggedOut />
             }
           }/>
-          
+          // Login/Signup
           <Route exact path="/login" render={() =>
             {
               return localStorage.getItem('jwt') ? <Redirect to="/"/> : <LoginForm />
             }
           } />
-          <Route exact path="/signup" component={SignupForm} />
+          <Route exact path="/signup" render={() =>
+            {
+              return localStorage.getItem('jwt') ? <Redirect to="/"/> : <SignupForm />
+            }
+          } />
         </Switch>
       </div>
     );

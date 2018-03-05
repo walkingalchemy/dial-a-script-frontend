@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { signupUser } from '../actions/user'
+import { withRouter } from 'react-router-dom'
 
 class SignupForm extends React.Component {
   state = {
@@ -22,6 +23,7 @@ class SignupForm extends React.Component {
     }
     if (this.state.password && this.state.password === this.state.passwordConfirmation) {
       this.props.signupUser(this.state.name, this.state.password)
+      .then(() => this.props.history.push('/'))
     } else {
       alert("Password must match confirmation")
     }
@@ -39,4 +41,4 @@ class SignupForm extends React.Component {
   }
 }
 
-export default connect(null, { signupUser })(SignupForm)
+export default withRouter(connect(null, { signupUser })(SignupForm))
