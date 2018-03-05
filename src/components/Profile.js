@@ -1,7 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Route, withRouter } from 'react-router-dom'
+
 
 import ScriptContainer from './ScriptContainer'
+
+
 
 class Profile extends React.Component {
 
@@ -13,6 +17,7 @@ class Profile extends React.Component {
         :
         <ScriptContainer />
       }
+      
       </div>
     )
   }
@@ -22,4 +27,4 @@ const mapStateToProps = (state) => ({ auth: state.auth })
 
 
 
-export default connect(mapStateToProps)(Profile)
+export default withRouter(connect(mapStateToProps)(Profile))

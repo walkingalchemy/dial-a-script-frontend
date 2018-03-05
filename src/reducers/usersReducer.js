@@ -8,6 +8,8 @@ export default function usersReducer(
   switch (type) {
     case "SET_CURRENT_USER":
       return {...state, name: payload.name, currentUserId: payload.user_id}
+    case "REMOVE_CURRENT_USER":
+      return {...state, name: null, currentUserId: null}
     default:
       return state
   }

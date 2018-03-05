@@ -5,6 +5,7 @@ export function loginUser(name, password) {
   return (dispatch) => {
     adapter.auth.login({name, password})
     .then(userData => {
+      console.log(userData)
       dispatch(setCurrentUser(userData))
       localStorage.setItem('jwt', userData.jwt)
     })
@@ -21,7 +22,19 @@ export function signupUser(name, password) {
   }
 }
 
+export function logoutUser() {
+  return (dispatch) => {
+    dispatch(removeCurrentUser())
+    localStorage.removeItem('jwt')
+  }
+}
 
+export function removeCurrentUser() {
+  return {
+    type: "REMOVE_CURRENT_USER",
+    payload: {}
+  }
+}
 
 export function setCurrentUser(userData) {
   return {

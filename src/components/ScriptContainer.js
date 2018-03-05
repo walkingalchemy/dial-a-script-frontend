@@ -1,7 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import adapter from '../adapter'
+import { setCurrentScript } from '../actions/script'
 
 class ScriptContainer extends React.Component {
   state = {
@@ -15,15 +17,20 @@ class ScriptContainer extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    adapter.eventHandlers.createScript({...this.state, user_id: this.props.auth.currentUserId}).then(resp => {
-      if (resp.error) {
-        alert(resp.error)
-      } else {
-        console.log(resp)
-        // this.props.history.push(`/script/${resp.id}`)
-        // this.props.setUser(resp)
-      }
-    })
+    adapter.eventHandlers.createScript(
+      {
+        ...this.state,
+        user_id: this.props.auth.currentUserId
+      })
+      .then(resp => {
+        if (resp.error) {
+          alert(resp.error)
+        } else {
+          this.props.setCurrentScript(resp)
+          
+          this.props.history.push("/script")
+        }
+      })
   }
 
   onInputChange = (e) => {
@@ -56,8 +63,8 @@ class ScriptContainer extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({ auth: state.auth })
+const mapStateToProps = (state) => ({ auth: state.auth, currentScript: state.currentScript })
 
 
 
-export default connect(mapStateToProps, {  })(ScriptContainer)
+export default withRouter(connect(mapStateToProps, { setCurrentScript })(ScriptContainer))

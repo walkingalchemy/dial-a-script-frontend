@@ -13,7 +13,7 @@ const authedHeaders = {
 const URL_ROOT = 'http://localhost:3000'
 const API_ROOT = `${URL_ROOT}/api/v1`
 
-
+// auth
 const login = (loginParams) => {
   return fetch(`${API_ROOT}/login`, {
     method: 'POST',

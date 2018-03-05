@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-import Profile from '../components/Profile'
-import LoginForm from './LoginForm'
-import SignupForm from './SignupForm'
+
+
+import { logoutUser } from '../actions/user'
 
 class NavBar extends Component {
   render() {
@@ -11,13 +12,23 @@ class NavBar extends Component {
       <nav>
         <Link to="/login">Login</Link>
         <Link to="/signup">Signup</Link>
-        <Link to="/profile">Profile</Link>
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/login" component={LoginForm} />
-        <Route exact path="/signup" component={SignupForm} />
+        <Link to="/profile">Create-a-Script</Link>
+        <Link to="/scripts">Discover-a-Script</Link>
+
+        
+        <div>
+          {this.renderLogoutButton()}
+        </div>
       </nav>
     );
   }
+  
+  renderLogoutButton = () => {
+    if(this.props.auth.name) {
+        return <button onClick={this.props.logoutUser } >Log Out</button>
+    }
+  }
+  
 }
 
-export default NavBar;
+export default withRouter(connect((state) => ({ auth: state.auth }), { logoutUser })(NavBar));

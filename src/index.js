@@ -10,11 +10,13 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import './index.css';
 import App from './App';
 import usersReducer from './reducers/usersReducer'
+import scriptsReducer from './reducers/scriptsReducer'
 
 import registerServiceWorker from './registerServiceWorker';
 // hook up redux
 const rootReducer = combineReducers({ 
-  auth: usersReducer 
+  auth: usersReducer,
+  currentScript: scriptsReducer
 })
 
 const store = createStore(
@@ -23,7 +25,10 @@ const store = createStore(
     auth: {
       name: null,
       currentUserId: null
-      }
+    },
+    currentScript: {
+      
+    }
   }, 
   composeWithDevTools(applyMiddleware(thunk))
 )
