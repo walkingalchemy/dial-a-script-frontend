@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { Route, withRouter } from 'react-router-dom'
 
 
-import ScriptContainer from './ScriptContainer'
+import ScriptList from './ScriptList'
+import LoggedOut from '../nav/LoggedOut'
 
 
 
@@ -12,10 +13,10 @@ class Profile extends React.Component {
   render () {
     return (
       <div>
-      {!this.props.auth.name ?
-        <h1>Please Log In or Sign Up</h1>
+      {!localStorage.getItem('jwt') ?
+        <LoggedOut />
         :
-        <ScriptContainer />
+        <ScriptList />
       }
       
       </div>

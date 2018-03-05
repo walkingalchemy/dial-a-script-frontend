@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { loginUser } from '../actions/user'
+import { withRouter } from 'react-router-dom'
 
 class LoginForm extends React.Component {
   state = {
@@ -17,6 +18,7 @@ class LoginForm extends React.Component {
   handleLoginSubmit = (event) => {
     event.preventDefault()
     this.props.loginUser(this.state.name, this.state.password)
+    .then(() => this.props.history.push('/'))
   }
 
   render() {
@@ -30,4 +32,4 @@ class LoginForm extends React.Component {
   }
 }
 
-export default connect(null, { loginUser })(LoginForm)
+export default withRouter(connect(null, { loginUser })(LoginForm))

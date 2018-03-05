@@ -3,7 +3,7 @@ import adapter from '../adapter'
 
 export function loginUser(name, password) {
   return (dispatch) => {
-    adapter.auth.login({name, password})
+    return adapter.auth.login({name, password})
     .then(userData => {
       console.log(userData)
       dispatch(setCurrentUser(userData))

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 import adapter from '../adapter'
-import { setCurrentScript } from '../actions/script'
+import { createScript } from '../actions/script'
 
 class ScriptContainer extends React.Component {
   state = {
@@ -17,20 +17,12 @@ class ScriptContainer extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    adapter.eventHandlers.createScript(
+    this.props.createScript(
       {
         ...this.state,
         user_id: this.props.auth.currentUserId
       })
-      .then(resp => {
-        if (resp.error) {
-          alert(resp.error)
-        } else {
-          this.props.setCurrentScript(resp)
-          
-          this.props.history.push("/script")
-        }
-      })
+      .then(() => this.props.history.push('/'))
   }
 
   onInputChange = (e) => {
@@ -67,4 +59,4 @@ const mapStateToProps = (state) => ({ auth: state.auth, currentScript: state.cur
 
 
 
-export default withRouter(connect(mapStateToProps, { setCurrentScript })(ScriptContainer))
+export default withRouter(connect(mapStateToProps, { createScript })(ScriptContainer))

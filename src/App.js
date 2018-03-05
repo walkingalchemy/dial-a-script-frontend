@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom'
+import { Redirect, Switch, Route, withRouter} from 'react-router-dom'
+import { connect } from 'react-redux';
 
 import NavBar from './nav/NavBar'
+import LoggedOut from './nav/LoggedOut'
 import Profile from './components/Profile'
 import LoginForm from './nav/LoginForm'
 import SignupForm from './nav/SignupForm'
 import CallScript from './components/CallScript'
 import ScriptList from './components/ScriptList'
+import ScriptContainer from './components/ScriptContainer'
 
 import './App.css';
 
@@ -15,15 +18,42 @@ class App extends Component {
     return (
       <div>
         <NavBar />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/login" component={LoginForm} />
-        <Route exact path="/signup" component={SignupForm} />
-        <Route exact path='/script' component={CallScript}/>
-        <Route exact path='/scripts' component={ScriptList}/>
-        
+        <Switch>
+          <Route exact path="/" render={() =>
+            {
+              return localStorage.getItem('jwt') ? <Redirect to="/profile" /> : <LoggedOut />
+            }
+          }/>
+          <Route exact path="/profile" render={() =>
+            {
+              return localStorage.getItem('jwt') ? <Profile /> : <LoggedOut />
+            }
+          }/>
+          <Route exact path="/create" render={() =>
+            {
+              return localStorage.getItem('jwt') ? <ScriptContainer /> : <LoggedOut />
+            }
+          }/>
+          <Route exact path="/script" render={() =>
+            {
+              return localStorage.getItem('jwt') ? <CallScript /> : <LoggedOut />
+            }
+          }/>
+          <Route exact path="/discover" render={() =>
+            {
+              return localStorage.getItem('jwt') ? <ScriptList /> : <LoggedOut />
+            }
+          }/>
+          
+          <Route exact path="/login" render={() =>
+            {
+              return localStorage.getItem('jwt') ? <Redirect to="/"/> : <LoginForm />
+            }
+          } />
+          <Route exact path="/signup" component={SignupForm} />
+        </Switch>
       </div>
     );
   }
 }
-
-export default App;
+export default withRouter(connect((state) => ({ auth: state.auth }))(App))
