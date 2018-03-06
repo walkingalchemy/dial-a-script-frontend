@@ -27,7 +27,7 @@ class CallScript extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { auth: state.auth, currentScript: state.currentScript.currentScript }
+  return { auth: state.auth, currentScript: state.scripts.currentScript }
 }
 
 

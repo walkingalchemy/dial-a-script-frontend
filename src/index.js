@@ -17,24 +17,12 @@ import registerServiceWorker from './registerServiceWorker';
 // hook up redux
 const rootReducer = combineReducers({ 
   auth: usersReducer,
-  currentScript: scriptsReducer,
-  currentCall: callsReducer
+  scripts: scriptsReducer,
+  calls: callsReducer
 })
 
 const store = createStore(
-  rootReducer,
-  {
-    auth: {
-      name: null,
-      currentUserId: null
-    },
-    currentScript: {
-      
-    },
-    currentCall: {
-      
-    }
-  }, 
+  rootReducer, 
   composeWithDevTools(applyMiddleware(thunk))
 )
 

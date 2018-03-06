@@ -46,6 +46,6 @@ class CallForm extends React.Component {
     </form>
   )}
 }
-const mapStateToProps = (state) => ({ auth: state.auth,  currentScript: state.currentScript.currentScript })
+const mapStateToProps = (state) => ({ auth: state.auth,  currentScript: state.scripts.currentScript })
 
 export default withRouter(connect(mapStateToProps, { createCall })(CallForm))

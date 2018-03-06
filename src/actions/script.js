@@ -10,6 +10,21 @@ export function createScript(scriptInputs) {
   }
 }
 
+export function getScripts() {
+  return (dispatch) => {
+    return adapter.eventHandlers.getScripts()
+    .then(scripts => {
+      dispatch(setScripts(scripts))
+    })
+  }
+}
+
+export function setScripts(scriptsData) {
+  return {
+    type: "SET_SCRIPTS",
+    payload: scriptsData
+  }
+}
 
 export function setCurrentScript(scriptData) {
   return {

@@ -53,7 +53,7 @@ class ScriptContainer extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({ auth: state.auth, currentScript: state.currentScript })
+const mapStateToProps = (state) => ({ auth: state.auth, currentScript: state.scripts.currentScript })
 
 
 

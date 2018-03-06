@@ -14,6 +14,6 @@ class Call extends React.Component {
       </div>
   )}
 }
-const mapStateToProps = (state) => ({ auth: state.auth,  currentScript: state.currentScript.currentScript, currentCall: state.currentCall.currentCall })
+const mapStateToProps = (state) => ({ auth: state.auth,  currentScript: state.scripts.currentScript, currentCall: state.calls.currentCall })
 
 export default withRouter(connect(mapStateToProps, {})(Call))
