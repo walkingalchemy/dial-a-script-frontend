@@ -5,6 +5,7 @@ import { withRouter } from 'react-router'
 import adapter from '../adapter'
 import Prompter from './Prompter'
 import PhoneList from './PhoneList'
+import CallForm from './CallForm'
 
 class CallScript extends React.Component {
 
@@ -17,6 +18,7 @@ class CallScript extends React.Component {
         <h5>{this.props.currentScript.description}</h5>
         <Prompter body={this.props.currentScript.body} />
         <PhoneList phones={this.props.currentScript.phones}/>
+        <CallForm />
         
         
       </div>

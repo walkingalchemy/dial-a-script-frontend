@@ -66,6 +66,14 @@ const createScript = (inputs) => {
   }).then(res => res.json())
 }
 
+const createCall = (inputs) => {
+  return fetch(`${API_ROOT}/calls`, {
+    method: 'POST',
+    headers: authedHeaders,
+    body: JSON.stringify({call: inputs})
+  }).then(res => res.json())
+}
+
 // const saveModel = (m) => {
 //   return fetch(`${API_ROOT}/models`, {
 //     method: 'POST',
@@ -186,6 +194,7 @@ export default {
   eventHandlers: {
      getScripts,
      createScript,
+     createCall,
   },
   auth: {
     login,

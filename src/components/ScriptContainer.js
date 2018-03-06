@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import adapter from '../adapter'
 import { createScript } from '../actions/script'
 
 class ScriptContainer extends React.Component {
@@ -20,9 +19,8 @@ class ScriptContainer extends React.Component {
     this.props.createScript(
       {
         ...this.state,
-        user_id: this.props.auth.currentUserId
       })
-      .then(() => this.props.history.push('/'))
+      .then(() => this.props.history.push('/script'))
   }
 
   onInputChange = (e) => {

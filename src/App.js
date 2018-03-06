@@ -8,6 +8,7 @@ import Profile from './components/Profile'
 import LoginForm from './nav/LoginForm'
 import SignupForm from './nav/SignupForm'
 import CallScript from './components/CallScript'
+import Call from './components/Call'
 import ScriptList from './components/ScriptList'
 import ScriptContainer from './components/ScriptContainer'
 
@@ -42,6 +43,11 @@ class App extends Component {
           <Route exact path="/discover" render={() =>
             {
               return localStorage.getItem('jwt') ? <ScriptList /> : <LoggedOut />
+            }
+          }/>
+          <Route exact path="/call" render={() =>
+            {
+              return localStorage.getItem('jwt') ? <Call /> : <LoggedOut />
             }
           }/>
           // Login/Signup

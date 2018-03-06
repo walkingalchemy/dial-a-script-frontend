@@ -11,12 +11,14 @@ import './index.css';
 import App from './App';
 import usersReducer from './reducers/usersReducer'
 import scriptsReducer from './reducers/scriptsReducer'
+import callsReducer from './reducers/callsReducer'
 
 import registerServiceWorker from './registerServiceWorker';
 // hook up redux
 const rootReducer = combineReducers({ 
   auth: usersReducer,
-  currentScript: scriptsReducer
+  currentScript: scriptsReducer,
+  currentCall: callsReducer
 })
 
 const store = createStore(
@@ -27,6 +29,9 @@ const store = createStore(
       currentUserId: null
     },
     currentScript: {
+      
+    },
+    currentCall: {
       
     }
   }, 
