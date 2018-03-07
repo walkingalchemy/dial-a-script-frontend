@@ -6,6 +6,7 @@ export function createScript(scriptInputs) {
     return adapter.eventHandlers.createScript(scriptInputs)
     .then(scriptData => {
       dispatch(setCurrentScript(scriptData))
+      return scriptData
     })
   }
 }

@@ -12,8 +12,9 @@ class ScriptList extends React.Component {
   }
 
   render () {
-    debugger
-    const scriptCards = this.props.allScripts.map( (script) => <ScriptCard script={script}/>)
+    const scriptCards = this.props.allScripts.map( (script) => {
+      return <ScriptCard script={script}/>
+  })
     return (
       <div>
         <h1> Discover-a-Script </h1>

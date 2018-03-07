@@ -8,9 +8,8 @@ import PhoneList from './PhoneList'
 import CallForm from './CallForm'
 
 class CallScript extends React.Component {
-
+  
   render () {
-    console.log(this.props.currentScript)
     return (
       <div>
         <h1> Dial-a-Script </h1>

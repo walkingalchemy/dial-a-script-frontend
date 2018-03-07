@@ -20,7 +20,7 @@ class ScriptContainer extends React.Component {
       {
         ...this.state,
       })
-      .then(() => this.props.history.push('/script'))
+      .then((scriptData) => this.props.history.push(`/script/${scriptData.id}`))
   }
 
   onInputChange = (e) => {

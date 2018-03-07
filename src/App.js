@@ -12,10 +12,14 @@ import Call from './components/Call'
 import ScriptList from './components/ScriptList'
 import ScriptContainer from './components/ScriptContainer'
 
+
+
 import './App.css';
 
 class App extends Component {
+  
   render() {
+    
     return (
       <div>
         <NavBar />
@@ -50,6 +54,11 @@ class App extends Component {
               return localStorage.getItem('jwt') ? <Call /> : <LoggedOut />
             }
           }/>
+          <Route exact path='/script/:id' render={(routerProps) =>
+            {
+              return localStorage.getItem('jwt') ? <CallScript /> : <LoggedOut />
+            }
+          }/>
           // Login/Signup
           <Route exact path="/login" render={() =>
             {
@@ -66,4 +75,8 @@ class App extends Component {
     );
   }
 }
-export default withRouter(connect((state) => ({ auth: state.auth }))(App))
+
+const mapStateToProps = (state) => ({ auth: state.auth, allScripts: state.scripts.allScripts })
+
+
+export default withRouter(connect((state) => (mapStateToProps, {  }))(App))
