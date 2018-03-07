@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { loginUser } from '../actions/user'
 import { withRouter } from 'react-router-dom'
-import { Form } from 'semantic-ui-react'
+import { Form, Segment, Container, Header } from 'semantic-ui-react'
 
 class LoginForm extends React.Component {
   state = {
@@ -24,11 +24,16 @@ class LoginForm extends React.Component {
 
   render() {
     return(
+      <Container text>
+      <Header as='h2' attached="top" inverted>Log In</Header>
+      <Segment raised attached>
       <Form onSubmit={this.handleLoginSubmit}>
-        <Form.Input fluid name="name" type="text" placeholder="Name" value={this.state.name} onChange={this.onInputChange}></Form.Input>
-        <Form.Input fluid name="password" type="password" placeholder="Password" value={this.state.password} onChange={this.onInputChange}></Form.Input>
+        <Form.Input label="Name" name="name" type="text" placeholder="Name" value={this.state.name} onChange={this.onInputChange}></Form.Input>
+        <Form.Input label="Password" name="password" type="password" placeholder="Password" value={this.state.password} onChange={this.onInputChange}></Form.Input>
         <Form.Button type="submit">Login</Form.Button>
       </Form>
+      </Segment>
+      </Container>
     )
   }
 }

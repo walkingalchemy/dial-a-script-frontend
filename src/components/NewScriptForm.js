@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 
 import { createScript } from '../actions/script'
 
-class ScriptContainer extends React.Component {
+class NewScriptForm extends React.Component {
   state = {
     title: "",
     body: "",
@@ -57,4 +57,4 @@ const mapStateToProps = (state) => ({ auth: state.auth, currentScript: state.scr
 
 
 
-export default withRouter(connect(mapStateToProps, { createScript })(ScriptContainer))
+export default withRouter(connect(mapStateToProps, { createScript })(NewScriptForm))

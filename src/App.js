@@ -10,7 +10,7 @@ import SignupForm from './nav/SignupForm'
 import CallScript from './components/CallScript'
 import Call from './components/Call'
 import ScriptList from './components/ScriptList'
-import ScriptContainer from './components/ScriptContainer'
+import NewScriptForm from './components/NewScriptForm'
 
 
 
@@ -36,7 +36,7 @@ class App extends Component {
           }/>
           <Route exact path="/create" render={() =>
             {
-              return localStorage.getItem('jwt') ? <ScriptContainer /> : <LoggedOut />
+              return localStorage.getItem('jwt') ? <NewScriptForm /> : <LoggedOut />
             }
           }/>
           <Route exact path="/script" render={() =>
