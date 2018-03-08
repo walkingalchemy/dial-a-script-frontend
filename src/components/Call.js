@@ -1,17 +1,31 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
+import { Form, TextArea, Segment, Header, Container, Grid } from 'semantic-ui-react'
 
 class Call extends React.Component {
 
   render () {
     const path = `/script/${this.props.currentScript.id}`
+    let outcome
+      if(this.props.currentCall.outcome === "true"){
+        outcome = "successful"
+      }else{
+      outcome = "unsuccessful"
+      }
     return(
       <div>
-        <h2>Call Log</h2>
-        <h4>Phone Number: {this.props.currentCall.phone.digits}</h4>
-        <p>{this.props.currentCall.user.name} called {this.props.currentCall.organization.name} at their {this.props.currentCall.office.title} office.</p>
-        <p>The call used the script <Link to={path}>{this.props.currentCall.script.title} </Link> and talked to {this.props.currentCall.who}.</p>
+      <Container text>
+        <Header as="h2" attached="top" inverted>Call Log</Header>
+        <Segment attached>
+        <h3>Phone Number: {this.props.currentCall.phone.digits}</h3>
+        <p>{this.props.currentCall.user.name} used <Link to={path}>{this.props.currentCall.script.title} </Link> to call {this.props.currentCall.organization.name} at their {this.props.currentCall.office.title} office.</p>
+        <p>They spoke to {this.props.currentCall.who} and the call was { outcome }.</p>
+        <h5>{this.props.currentCall.user.name}'s Notes from the Call:</h5>
+        <p>{this.props.currentCall.note}</p>
+
+        </Segment>
+        </Container>
       </div>
   )}
 }

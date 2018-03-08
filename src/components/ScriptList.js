@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+import { Segment, Header, Container, Grid, Card } from 'semantic-ui-react'
 
 import { getScripts } from '../actions/script'
 import ScriptCard from './ScriptCard'
@@ -17,8 +18,12 @@ class ScriptList extends React.Component {
   })
     return (
       <div>
-        <h1> Discover-a-Script </h1>
+      <Header as="h1" attached="top" inverted> Discover-a-Script </Header>
+      <Segment attached>
+        <Card.Group>
         {scriptCards}
+        </Card.Group>
+      </Segment>
       </div>
     )
   }

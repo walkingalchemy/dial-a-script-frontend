@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { Form, TextArea, Segment, Header, Container, Grid } from 'semantic-ui-react'
 
 import adapter from '../adapter'
 import { createCall } from '../actions/call'
@@ -34,16 +35,14 @@ class CallForm extends React.Component {
 
   render () {
     return(
-    <form onSubmit={this.handleSubmit}>
-      <input type="text" name="who" placeholder="Who answered the call?" value={this.state.who} onChange={this.onInputChange}/>
-      <input type="text" name="note" placeholder="Call Notes" value={this.state.note} onChange={this.onInputChange}/>
+    <Form onSubmit={this.handleSubmit}>
+      <Form.Input type="text" name="who" placeholder="Who answered the call?" value={this.state.who} onChange={this.onInputChange}/>
+      <Form.Field control={TextArea} name="note" placeholder="Call Notes" value={this.state.note} onChange={this.onInputChange}/>
       <p>Was the call successful?</p>
-      <input type="radio" id="succcess-no" name="outcome" value="false" onChange={this.onInputChange}/>
-      <label for="success-no">No</label>
-      <input type="radio" id="success-yes" name="outcome" value="true" onChange={this.onInputChange}/>
-      <label for="success-yes">Yes</label>
-      <input type="submit" value="Log Call"/>
-    </form>
+      <Form.Input type="radio" label="No" id="succcess-no" name="outcome" value="false" onChange={this.onInputChange}/>
+      <Form.Input type="radio" label="Yes" id="success-yes" name="outcome" value="true" onChange={this.onInputChange}/>
+      <Form.Button type="submit">Log Call</Form.Button>
+    </Form>
   )}
 }
 const mapStateToProps = (state) => ({ auth: state.auth,  currentScript: state.scripts.currentScript })

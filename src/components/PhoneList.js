@@ -1,15 +1,26 @@
 import React from 'react'
+import { List, Header, Segment } from 'semantic-ui-react'
 
 const PhoneList = (props) => {
   console.log(phones)
   const phones = props.phones.map(phone => {
-    return <p><a href={`tel:${phone.digits}`}>{phone.digits}</a></p>
-  })
+    return (
+      <List.Item>
+        <List.Icon name='phone' size='large' verticalAlign='middle' />
+        <List.Content>
+          <List.Header><a href={`tel:${phone.digits}`}>{phone.digits}</a></List.Header>
+        </List.Content>
+      </List.Item>
+      
+  )})
   return (
-    <div>
-    <h3>Call One of these Numbers:</h3>
-      {phones}
-    </div>
+
+
+    <List>
+        <Header as="h3">Call One of these Numbers:</Header>
+        {phones}
+    </List>
+
   )
 }
 
