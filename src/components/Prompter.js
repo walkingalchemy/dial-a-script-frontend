@@ -3,7 +3,7 @@ import React from 'react'
 const Prompter = (props) => {
 
   return (
-    <div>
+    <div className="scriptbody">
       <p>{props.body}</p>
     </div>
   )

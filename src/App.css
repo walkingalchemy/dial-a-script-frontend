@@ -35,3 +35,7 @@ input:invalid {
 input:valid {
   border: 2px solid black;
 }
+
+.scriptbody {
+      font-size: x-large;
+}

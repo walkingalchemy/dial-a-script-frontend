@@ -7,6 +7,8 @@ import { setCurrentScript } from '../actions/script'
 
 class ScriptCard extends React.Component {
 
+  // TODO: Add visual display of calls over time and success rate for each scriptcard
+  
   handleClick = (e) => {
     e.preventDefault()
     this.props.setCurrentScript(this.props.script)

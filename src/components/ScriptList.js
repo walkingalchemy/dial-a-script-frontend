@@ -8,6 +8,10 @@ import ScriptCard from './ScriptCard'
 
 class ScriptList extends React.Component {
 
+  // TODO: add filtering, searching and sorting to this page to allow surfacing
+  // of relevant and worthwhile scripts
+  // TODO: Possibly use users' scripts and call history to surface "scripts
+  // you might be interested in"
   componentDidMount = () => {
     this.props.getScripts()
   }

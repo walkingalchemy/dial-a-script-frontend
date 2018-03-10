@@ -9,12 +9,15 @@ import PhoneList from './PhoneList'
 import CallForm from './CallForm'
 
 class CallScript extends React.Component {
-  
+
+  // TODO: Render script itself using formatting info from rich text or Markup
+  // form in NewScriptForm
+
   render () {
     return (
       <div>
       <Header as='h1' attached="top" inverted>Dial-A-Script</Header>
-      <Segment attached> 
+      <Segment attached>
         <Grid>
         <Grid.Column width={10}>
         <Header as='h2' attached="top" inverted>{this.props.currentScript.title}</Header>
@@ -30,7 +33,7 @@ class CallScript extends React.Component {
         <PhoneList phones={this.props.currentScript.phones}/>
         <CallForm />
         </Grid.Column>
-        
+
         </Grid>
       </Segment>
       </div>

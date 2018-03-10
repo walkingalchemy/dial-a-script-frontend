@@ -8,16 +8,16 @@ import { logoutUser } from '../actions/user'
 
 class NavBar extends Component {
   state = { activeItem: ''}
-  
+
   handleMenuClick = (e, { name }) => this.setState({activeItem: name })
-  
+
   render() {
       const { activeItem } = this.state
-      
+
       if(localStorage.getItem('jwt')) {
         return (
+          // TODO: Fix: Menu items change pointer on click anywhere in element but only redirect when text is clicked
           <Menu pointing inverted>
-            <Menu.Item name="profile" active={activeItem === "profile"} onClick={this.handleMenuClick}><Link to="/profile">Profile</Link></Menu.Item>
             <Menu.Item name="create" active={activeItem === "create"} onClick={this.handleMenuClick}><Link to="/create">Create-A-Script</Link></Menu.Item>
             <Menu.Item name="discover" active={activeItem === "discover"} onClick={this.handleMenuClick}><Link to="/discover">Discover-a-Script</Link></Menu.Item>
           <Menu.Menu inverted position='right'>
@@ -31,7 +31,7 @@ class NavBar extends Component {
       </Menu>
     )}
   }
-  
+
   renderLogoutButton = () => {
     if(localStorage.getItem('jwt')) {
         return (
@@ -43,7 +43,7 @@ class NavBar extends Component {
           </Button>
     )}
   }
-  
+
 }
 
 export default withRouter(connect((state) => ({ auth: state.auth }), { logoutUser })(NavBar));

@@ -8,6 +8,12 @@ import { createCall } from '../actions/call'
 
 class CallForm extends React.Component {
 
+  // TODO: Change call link to use something like Twilio API to create more
+  // robust phone calling ability.
+  // TODO: Get call link click to keep user on this app and begin duration stopwatch
+  // TODO: Possibly extend Org/Office/Phone model to have a Person model that 
+  // could be created with the Who answered input
+
   state = {
     who: "",
     note: "",

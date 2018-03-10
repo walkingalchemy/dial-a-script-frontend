@@ -5,6 +5,9 @@ import { Form, TextArea, Segment, Header, Container, Grid } from 'semantic-ui-re
 
 class Call extends React.Component {
 
+  // BUG: Currently currentCall.office.title is somehow being set to the same
+  // value as currentCall.script.title instead of the actuall office title text
+
   render () {
     const path = `/script/${this.props.currentScript.id}`
     let outcome

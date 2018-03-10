@@ -17,13 +17,17 @@ import NewScriptForm from './components/NewScriptForm'
 import './App.css';
 
 class App extends Component {
-  
+
   render() {
-    
+
     return (
       <div>
         <NavBar />
         <Switch>
+        // TODO: Refactor authorization into a DRYer pattern
+        // BUG: There is currently an issue where login/signup can create a jwt
+        // token and "authenticate" the frontend client but not allow the backend
+        // to see the user id when Authorized is checked
           <Route exact path="/" render={() =>
             {
               return localStorage.getItem('jwt') ? <Redirect to="/profile" /> : <LoggedOut />

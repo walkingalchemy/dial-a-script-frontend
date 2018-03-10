@@ -6,6 +6,13 @@ import { Form, TextArea, Segment, Header, Container, Grid } from 'semantic-ui-re
 import { createScript } from '../actions/script'
 
 class NewScriptForm extends React.Component {
+
+  // TODO: Add either rich text formatting via Draft.js or some type of Markup
+  // comipiler to the script body input so that users can create formatted scripts
+
+  // TODO: Add search/dropdown to Phone input so that users can search for existing
+  // phone numbers and show organization/office info in dropdown
+
   state = {
     title: "",
     body: "",
