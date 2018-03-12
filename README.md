@@ -1,4 +1,4 @@
-<p align="center"> <img src="https://png.icons8.com/dusk/64/000000/collaboration.png"> </p>
+<p align="center"> <img src="https://png.icons8.com/nolan/96/000000/phone.png"> </p>
 
 # Dial-A-Script
 > A tool for creating, dialing and sharing call scripts
